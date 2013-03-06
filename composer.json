@@ -1,0 +1,31 @@
+{
+    "name": "speckcommerce/speck-install",
+    "description": "Installation module for the ecommerce platform SpeckCommerce",
+    "type": "library",
+    "minimum-stability": "dev",
+    "keywords": [
+        "zf2",
+        "speckcommerce"
+    ],
+    "homepage": "http://github.com/speckcommerce/SpeckInstall",
+    "authors": [
+        {
+            "name": "Nigel Lundsten",
+            "email": "nigel.lundsten@gmail.com",
+            "homepage": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*",
+        "zf-commons/zfc-base": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "SpeckOrder": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
