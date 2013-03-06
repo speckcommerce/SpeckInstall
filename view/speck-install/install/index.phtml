@@ -1,0 +1,34 @@
+<h1> Install SpeckCommerce </h1>
+
+<form method="post" action="/install/schema">
+<p>MySQL User and Database must be configured prior to this step</p>
+<div class="row">
+    <div class="span2">
+        <input class="span2" name="host" placeholder="host address" type="text" value="localhost"/>
+    </div>
+    <div class="span1">
+        <input class="span1" name="port" placeholder="port" type="text" value="3306"/>
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <input class="span3" name="user" placeholder="mysql user" type="text" value="speck"    />
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <input class="span3" name="pass" placeholder="mysql password" type="text" />
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <input class="span3" name="db_name" placeholder="database name" type="text" value="speck"    />
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <button class="btn" id="test_connection" onClick="alert('not implemented yet'); return false">Test Connection</button>
+        <input type="submit" class="btn btn-primary" value="Next"/>
+    </div>
+</div>
+</form>
