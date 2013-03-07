@@ -48,11 +48,12 @@ class Install implements ServiceLocatorAwareInterface
         $db = 'config/autoload/database.local.php';
 
         $config = $this->dbConfig($params);
-        $test = $this->testDbConfig($config['db']);
+        $adapter = $this->testDbConfig($config['db'], true);
 
-        if ($test !== true) {
-            throw new \Exception($test);
+        if (!$adapter instanceOf Adapter) {
+            throw new \Exception($adapter);
         }
+        $this->setDbAdapter($adapter);
 
         $content = "<?php\nreturn " . var_export($config, 1) . ';';
 
