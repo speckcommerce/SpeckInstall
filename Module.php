@@ -2,6 +2,8 @@
 
 namespace SpeckInstall;
 
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
     public function getAutoloaderConfig()
@@ -82,5 +84,17 @@ class Module
         if($e->getRequest() instanceof \Zend\Console\Request){
             return;
         }
+        $app = $e->getParam('application');
+        $em  = $app->getEventManager();
+        $em->attach(MvcEvent::EVENT_DISPATCH, array($this , 'install'));
+    }
+
+    public function install($e)
+    {
+        if($e->getRouteMatch()->getParam('controller') === 'speck_install') {
+            return;
+        }
+        $response = $e->getResponse();
+        $response->setStatusCode(307)->getHeaders()->addHeaderLine('Location', '/install');
     }
 }
