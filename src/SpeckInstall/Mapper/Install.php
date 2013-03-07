@@ -2,23 +2,17 @@
 
 namespace SpeckInstall\Mapper;
 
-use \Zend\ServiceManager\ServiceLocatorAwareInterface;
-use \Zend\ServiceManager\ServiceLocatorAwareTrait;
-use \Zend\Db\Adapter\Adapter;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Sql;
 
 class Install implements ServiceLocatorAwareInterface
 {
     use ServiceLocatorAwareTrait;
 
     protected $dbAdapter;
-
-    public function initDbAdapter($params)
-    {
-        if ($this->dbAdapter) {
-            return;
-        }
-
-    }
+    protected $sql;
 
     public function dbConfig($params)
     {
@@ -67,6 +61,12 @@ class Install implements ServiceLocatorAwareInterface
         file_put_contents($root . $db, $content);
 
         return true;
+    }
+
+    public function query($sqlString)
+    {
+        $result = $this->getDbAdapter()->query($sqlString)->execute();
+        return $result;
     }
 
     /**
