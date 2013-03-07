@@ -86,7 +86,7 @@ class Module
         }
         $app = $e->getParam('application');
         $em  = $app->getEventManager();
-        $em->attach(MvcEvent::EVENT_DISPATCH, array($this , 'install'));
+        $em->attach(MvcEvent::EVENT_DISPATCH, array($this , 'install'), 100);
     }
 
     public function install($e)

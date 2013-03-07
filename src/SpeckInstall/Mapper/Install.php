@@ -22,9 +22,8 @@ class Install implements ServiceLocatorAwareInterface
 
     public function dbConfig($params)
     {
-        $root = (__DIR__ . '/../../../../..');
-        $dbDist = ('/config/autoload/database.local.php.dist');
-        $config = include($root . $dbDist);
+        $dbDist = 'config/autoload/database.local.php.dist';
+        $config = include($dbDist);
 
         $config['db']['username'] = $params['user'];
         $config['db']['password'] = $params['pass'];
@@ -52,8 +51,7 @@ class Install implements ServiceLocatorAwareInterface
 
     public function createDbConfig($params)
     {
-        $root = (__DIR__ . '/../../../../..');
-        $db = ('/config/autoload/database.local.php');
+        $db = 'config/autoload/database.local.php';
 
         $config = $this->dbConfig($params);
         $test = $this->testDbConfig($config['db']);
@@ -64,7 +62,7 @@ class Install implements ServiceLocatorAwareInterface
 
         $content = "<?php\nreturn " . var_export($config, 1) . ';';
 
-        file_put_contents($root . $db, $content);
+        file_put_contents($db, $content);
 
         return true;
     }
