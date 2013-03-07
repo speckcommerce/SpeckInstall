@@ -1,0 +1,17 @@
+<? if($this->success) :?>
+<h2>Installation Complete!</h2>
+<? else : ?>
+<h2>Installation Failed!</h2>
+<? endif; ?>
+
+<ul>
+<? foreach($this->responses as $response) : ?>
+<?
+$label = $response[0] ? 'success' : 'important';
+$name = $response[0] ? 'SUCCESS' : 'FAILED';
+?>
+<li><span class="label label-<?=$label;?>"><?= $name ;?></span> <?=$response[1];?></li>
+<? endforeach; ?>
+</ul>
+
+<p> please remove SpeckInstall from /config/application.config.php </p>
