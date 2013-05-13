@@ -1,5 +1,10 @@
 <h1> Install SpeckCommerce </h1>
-
+<?
+    $directory = 'config';
+    if(!is_writable($directory)) {
+        echo '<h1 style="color:#ff5555">cannot write to config directory</h1><h3>You will have to create db config file manually if you choose to continue</h3>';
+    }
+?>
 <form method="post" action="/install/schema">
 <div class="row">
     <div class="span3">
