@@ -1,8 +1,9 @@
 <h1> Install SpeckCommerce </h1>
 <?
     $directory = 'config';
+    $dbconfig  = 'config/autoload/database.local.php'; // todo: check if db config exists and connection works, display details used for install instead of form
     if(!is_writable($directory)) {
-        echo '<h1 style="color:#ff5555">cannot write to config directory</h1><h3>You will have to create db config file manually if you choose to continue</h3>';
+        echo '<h3 style="color:#ff5555">cannot write to config directory</h3><h5> - please fix permissions, or ensure you have copied+configured the db config file manually before you continue</h5>';
     }
 ?>
 <form method="post" action="/install/schema">
