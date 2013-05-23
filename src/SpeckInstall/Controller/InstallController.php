@@ -36,7 +36,7 @@ class InstallController extends AbstractActionController
         $response = $this->getEventManager()->trigger('install.create_tables.post', $this, array('mapper' => $mapper));
         if (!$this->addResponse($response)) { return $this->finish(false); }
 
-        $response = $this->getEventManager()->trigger('install.setup_multisite',    $this, array('mapper' => $mapper, 'site_name' => $params['website_name']));
+        $response = $this->getEventManager()->trigger('install.setup_multisite',    $this, array('mapper' => $mapper, 'site_name' => $params['site_name']));
         if (!$this->addResponse($response)) { return $this->finish(false); }
 
         return $this->finish(true);
